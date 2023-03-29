@@ -25,10 +25,6 @@ public class PrimaryController {
 
     @FXML
     public void initialize() {
-        setup();
-    }
-
-    private void setup() {
         modalVBox.setVisible(false);
         board = new Board();
         updateTurnInfo();
@@ -38,16 +34,25 @@ public class PrimaryController {
             createButton(i);
     }
 
+    /**
+     * Update infoLabel to display who's turn it is.
+     */
     private void updateTurnInfo() {
         // Display which players turn it is
         infoLabel.setText(board.nextPlayer().toString() + "'s' turn");
     }
 
+    /**
+     * Create button i on the board.
+     *
+     * @param i button index.
+     */
     private void createButton(int i) {
         Button button = new Button();
-        String id = Integer.toString(i + 1);
-        button.setId(id);
+        button.setId(Integer.toString(i + 1));
         button.setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
+
+        // Add odd css class to odd buttons
         if (i % 2 != 0)
             button.getStyleClass().add("odd");
 

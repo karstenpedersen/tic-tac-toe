@@ -22,13 +22,17 @@ public class App extends Application {
         scene.getStylesheets().add(App.class.getResource("lightTheme.css").toExternalForm());
         scene.getStylesheets().add(App.class.getResource("style.css").toExternalForm());
         stage.setScene(scene);
+        stage.setTitle("Tic Tac Toe");
         stage.show();
     }
 
-    private static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
+    /**
+     * Load FXML file.
+     *
+     * @param fxml name of fxml file.
+     * @return loaded fxml.
+     * @throws IOException throws IOException if fxml is invalid.
+     */
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
@@ -38,6 +42,9 @@ public class App extends Application {
         launch();
     }
 
+    /**
+     * Toggle between light and dark stylesheets.
+     */
     public static void toggleTheme() {
         darktheme = !darktheme;
 
@@ -47,12 +54,15 @@ public class App extends Application {
             scene.getStylesheets().set(0, App.class.getResource("lightTheme.css").toExternalForm());
     }
 
+    /**
+     * Reset scene.
+     */
     public static void reset() {
         try {
             scene.setRoot(loadFXML("primary"));
-        } catch (Exception exc) {
-            exc.printStackTrace();
-            throw new RuntimeException(exc);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
