@@ -4,7 +4,6 @@ import com.example.App;
 import com.example.logic.Board;
 import com.example.logic.Player;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -39,7 +38,7 @@ public class PrimaryController {
      */
     private void updateTurnInfo() {
         // Display which players turn it is
-        infoLabel.setText(board.nextPlayer().toString() + "'s' turn");
+        infoLabel.setText(board.nextPlayer().toString() + "'s turn");
     }
 
     /**
@@ -101,7 +100,7 @@ public class PrimaryController {
 
     @FXML
     private void exitGame() {
-        Platform.exit();
+        App.exit();
     }
 
 }

@@ -3,6 +3,7 @@ package com.example;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -64,6 +65,13 @@ public class App extends Application {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * Exit application.
+     */
+    public static void exit() {
+        Platform.exit();
     }
 
 }
