@@ -20,7 +20,9 @@
             <Label fx:id="titleLabel" text="Tic Tac Toe" />
 
             <!-- Board -->
-            <GridPane fx:id="boardGridPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            <fx:include source="board.fxml" />
+
+            <!-- <GridPane fx:id="boardGridPane" maxHeight="-Infinity" maxWidth="-Infinity"
                minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0"
                xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
                <columnConstraints>
@@ -40,10 +42,10 @@
                      vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <!-- <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-            mnemonicParsing="false" text="Button" GridPane.rowIndex="1" /> -->
-               </children>
-            </GridPane>
+
+      </children>
+      </GridPane>
+      -->
 
             <!-- Info -->
             <Label fx:id="infoLabel" text="Player X won" />

@@ -15,12 +15,13 @@
 }
 
 .button:hover {
-    -fx-text-fill: -fx-color-player-1-fg;
-    -fx-background-color: -fx-color-player-1 !important;
+    -fx-text-fill: -fx-player-hover-fg;
+    -fx-background-color: -fx-player-hover !important;
 }
 
 #boardGridPane .button {
     -fx-font-size: 48px;
+    -fx-text-fill: -fx-color-text-fill;
     -fx-background-color: -fx-color-board-1;
 }
 
@@ -29,8 +30,8 @@
 }
 
 #boardGridPane .button:hover {
-    -fx-text-fill: -fx-color-player-1-fg;
-    -fx-background-color: -fx-color-player-1 !important;
+    -fx-text-fill: -fx-player-hover-fg;
+    -fx-background-color: -fx-player-hover !important;
 }
 
 #boardGridPane .button:disabled {

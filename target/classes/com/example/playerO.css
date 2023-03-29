@@ -1,0 +1,4 @@
+* {
+    -fx-player-hover: -fx-color-player-2;
+    -fx-player-hover-fg: -fx-color-player-2-fg;
+}
