@@ -1,38 +1,73 @@
+* {
+    -fx-text-fill: -fx-color-text-fill;
+}
+
 .root {
-    -fx-text-fill: #1b1b1b;
-    -fx-background-color: #ffffff;
+    -fx-text-fill: -fx-color-text-fill;
+    -fx-background-color: -fx-color-background;
 }
 
 .button {
-    -fx-font-size: 48px;
-    -fx-text-fill: #1b1b1b;
-    -fx-background-color: #f0f3fb;
+    -fx-background-color: -fx-color-text-fill;
+    -fx-text-fill: -fx-color-background;
     -fx-background-radius: 0;
 }
 
 .button:hover {
-    -fx-text-fill: #1b1b1b;
-    -fx-background-color: #00c794;
+    -fx-text-fill: -fx-color-player-1-fg;
+    -fx-background-color: -fx-color-player-1 !important;
 }
 
-.button:disabled {
-    -fx-opacity: 1;
-    -fx-background-color: #1b1b1b;
-}
-
-.button.X {
-    -fx-text-fill: #00c794;
-}
-
-.button.O {
-    -fx-text-fill: #4f41ad;
-}
-
-#titleLabel {
+#boardGridPane .button {
     -fx-font-size: 48px;
-    -fx-font-weight: 700;
+    -fx-background-color: -fx-color-board-1;
+}
+
+#boardGridPane .button.odd {
+    -fx-background-color: -fx-color-board-2;
+}
+
+#boardGridPane .button:hover {
+    -fx-text-fill: -fx-color-player-1-fg;
+    -fx-background-color: -fx-color-player-1 !important;
+}
+
+#boardGridPane .button:disabled {
+    -fx-opacity: 1;
+}
+
+#boardGridPane .button.X {
+    -fx-text-fill: -fx-color-player-1-fg;
+    -fx-background-color: -fx-color-player-1 !important;
+}
+
+#boardGridPane .button.O {
+    -fx-text-fill: -fx-color-player-2-fg;
+    -fx-background-color: -fx-color-player-2 !important;
+}
+
+#titleLabel, #gameEndLabel {
+    -fx-font-size: 48px;
+    -fx-font-weight: 800;
 }
 
 .label {
+    -fx-font-size: 18px;
+}
+
+#modalVBox {
+    /* -fx-background-color: #1b1b1b; */
+    -fx-text-fill: #ffffff;
+    -fx-background-color: rgba(0, 0, 0, 0.75);
+}
+
+#modalVBox .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 48px;
+}
+
+#modalVBox .button {
+    -fx-text-fill: #1b1b1b;
+    -fx-background-color: #ffffff;
     -fx-font-size: 18px;
 }

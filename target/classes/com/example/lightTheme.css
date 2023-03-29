@@ -1,0 +1,10 @@
+* {
+    -fx-color-player-1: #00c794;
+    -fx-color-player-2: #4f41ad;
+    -fx-color-player-1-fg: #1b1b1b;
+    -fx-color-player-2-fg: #ffffff;
+    -fx-color-board-1: #e0e3e9;
+    -fx-color-board-2: #f0f3fb;
+    -fx-color-background: #ffffff;
+    -fx-color-text-fill: #1b1b1b;
+}

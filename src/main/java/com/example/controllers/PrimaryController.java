@@ -1,14 +1,17 @@
 package com.example.controllers;
 
+import com.example.App;
 import com.example.logic.Board;
 import com.example.logic.Player;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 public class PrimaryController {
 
@@ -16,7 +19,9 @@ public class PrimaryController {
     @FXML
     private GridPane boardGridPane;
     @FXML
-    private Label infoLabel;
+    private Label infoLabel, gameEndLabel;
+    @FXML
+    private VBox modalVBox;
 
     @FXML
     public void initialize() {
@@ -24,6 +29,7 @@ public class PrimaryController {
     }
 
     private void setup() {
+        modalVBox.setVisible(false);
         board = new Board();
         updateTurnInfo();
 
@@ -40,9 +46,11 @@ public class PrimaryController {
     private void createButton(int i) {
         Button button = new Button();
         String id = Integer.toString(i + 1);
-        button.setText(id);
         button.setId(id);
         button.setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
+        if (i % 2 != 0)
+            button.getStyleClass().add("odd");
+
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -54,17 +62,18 @@ public class PrimaryController {
 
                 if (board.tied()) {
                     // Display tie
-                    infoLabel.setText("Tied");
+                    gameEndLabel.setText("TIED");
+                    modalVBox.setVisible(true);
                 } else if (board.won()) {
                     // Get winner
                     Player winner = board.nextPlayer() == Player.X ? Player.O : Player.X;
 
-                    // Display winner
-                    // TODO - Create pop up
-                    infoLabel.setText(winner.toString() + " won");
-
                     // Disable all buttons
                     boardGridPane.getChildren().forEach((c) -> c.setDisable(true));
+
+                    // Display end of game modal
+                    modalVBox.setVisible(true);
+                    gameEndLabel.setText(winner.toString() + " WON");
                 } else {
                     updateTurnInfo();
                 }
@@ -73,6 +82,21 @@ public class PrimaryController {
 
         // Add button to board
         boardGridPane.add(button, i % 3, i / 3);
+    }
+
+    @FXML
+    private void toggleTheme() {
+        App.toggleTheme();
+    }
+
+    @FXML
+    private void restartGame() {
+        App.reset();
+    }
+
+    @FXML
+    private void exitGame() {
+        Platform.exit();
     }
 
 }
