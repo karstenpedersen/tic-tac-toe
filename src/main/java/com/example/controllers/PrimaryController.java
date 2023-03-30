@@ -1,7 +1,6 @@
 package com.example.controllers;
 
 import com.example.App;
-import com.example.logic.GameState;
 import com.example.logic.Player;
 
 import javafx.fxml.FXML;
@@ -21,6 +20,7 @@ public class PrimaryController {
     public void initialize() {
         modalVBox.setVisible(false);
         boardController.setParent(this);
+        update(boardController.nextPlayer());
     }
 
     @FXML
@@ -38,43 +38,34 @@ public class PrimaryController {
         App.exit();
     }
 
-    public void setState(GameState state) {
-        switch (state) {
-            case PLAYING:
-                update();
-                break;
-            case WON:
-                stateWon();
-                break;
-            case TIED:
-                stateTied();
-                break;
-        }
-    }
-
-    public void stateWon() {
-        // Get winner
-        Player winner = boardController.nextPlayer() == Player.X ? Player.O : Player.X;
-
-        boardController.disableButtons();
-
+    /**
+     * Set state to won.
+     *
+     * @param winner player who won.
+     */
+    public void stateWon(Player winner) {
         // Display end of game modal
         modalVBox.setVisible(true);
         gameEndLabel.setText(winner.toString() + " WON");
     }
 
+    /**
+     * Set state to tied.
+     */
     public void stateTied() {
         // Display tie
         gameEndLabel.setText("TIED");
         modalVBox.setVisible(true);
     }
 
-    public void update() {
+    /**
+     * Update info.
+     *
+     * @param nextPlayer next player to play.
+     */
+    public void update(Player nextPlayer) {
         // Display which players turn it is
-        infoLabel.setText(boardController.nextPlayer().toString() + "'s turn");
-
-        // Update button hover color
-        App.setPlayerCss(boardController.nextPlayer());
+        infoLabel.setText(nextPlayer.toString() + "'s turn");
     }
 
 }

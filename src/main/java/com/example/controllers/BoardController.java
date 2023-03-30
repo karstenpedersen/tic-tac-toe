@@ -24,20 +24,38 @@ public class BoardController {
             createButton(i);
     }
 
+    /**
+     * Create board button.
+     *
+     * @param index button position.
+     */
     private void createButton(int index) {
         BoardCellController buttonController = new BoardCellController(this, index + 1);
         boardGridPane.add(buttonController, index % 3, index / 3);
     }
 
+    /**
+     * Disable all buttons.
+     */
     public void disableButtons() {
         // Disable all buttons
         boardGridPane.getChildren().forEach((c) -> c.setDisable(true));
     }
 
+    /**
+     * Get next player from board.
+     *
+     * @return next player to play.
+     */
     public Player nextPlayer() {
         return board.nextPlayer();
     }
 
+    /**
+     * Make a play on the board.
+     *
+     * @param index position to place the piece.
+     */
     public void play(int index) {
         board.play(index);
 
@@ -46,9 +64,14 @@ public class BoardController {
             parent.stateTied();
         } else if (board.won()) {
             App.setState(GameState.WON);
-            parent.stateWon();
+            Player winner = nextPlayer() == Player.X ? Player.O : Player.X;
+            parent.stateWon(winner);
+            disableButtons();
         } else {
-            parent.update();
+            parent.update(nextPlayer());
+
+            // Update button hover color
+            App.setPlayerCss(nextPlayer());
         }
     }
 

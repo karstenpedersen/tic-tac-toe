@@ -20,36 +20,12 @@
             <Label fx:id="titleLabel" text="Tic Tac Toe" />
 
             <!-- Board -->
-            <fx:include source="board.fxml" />
-
-            <!-- <GridPane fx:id="boardGridPane" maxHeight="-Infinity" maxWidth="-Infinity"
-               minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0"
-               xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="100.0"
-                     prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="100.0"
-                     prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="100.0"
-                     prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints maxHeight="-Infinity" minHeight="100.0" prefHeight="100.0"
-                     vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="-Infinity" minHeight="100.0" prefHeight="100.0"
-                     vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="-Infinity" minHeight="100.0" prefHeight="100.0"
-                     vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-
-      </children>
-      </GridPane>
-      -->
+            <fx:include fx:id="board" source="board.fxml" />
 
             <!-- Info -->
             <Label fx:id="infoLabel" text="Player X won" />
 
+            <!-- Theme Button -->
             <Button fx:id="toggleThemeButton" onAction="#toggleTheme">Toggle Theme</Button>
          </children>
          <padding>
