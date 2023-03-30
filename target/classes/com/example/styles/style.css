@@ -58,7 +58,6 @@
 }
 
 #modalVBox {
-    /* -fx-background-color: #1b1b1b; */
     -fx-text-fill: #ffffff;
     -fx-background-color: rgba(0, 0, 0, 0.75);
 }
